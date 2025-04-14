@@ -17,7 +17,7 @@ public class GridRenderer {
         if (x == robot.getX() && y == robot.getY()) {
           System.out.print(getRobotSymbol(robot.getDirection()));
         } else {
-          System.out.print("[  ]");
+          System.out.print("[ ]");
         }
       }
       System.out.println(); // New line after each row
@@ -32,17 +32,20 @@ public class GridRenderer {
    * @return A string representing the robot's orientation
    */
   private static String getRobotSymbol(char direction) {
+    final String CYAN = "\u001B[36m"; // ANSI escape code for cyan
+    final String RESET = "\u001B[0m"; // ANSI escape code to reset color
+
     switch (direction) {
       case 'N':
-        return "[↑]";
+        return "[" + CYAN + "↑" + RESET + "]";
       case 'E':
-        return "[→]";
+        return "[" + CYAN + "→" + RESET + "]";
       case 'S':
-        return "[↓]";
+        return "[" + CYAN + "↓" + RESET + "]";
       case 'W':
-        return "[←]";
+        return "[" + CYAN + "←" + RESET + "]";
       default:
-        return "[R]";
+        return "[" + CYAN + "R" + RESET + "]";
     }
   }
 }
