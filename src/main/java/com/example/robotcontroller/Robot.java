@@ -1,11 +1,21 @@
 package com.example.robotcontroller;
 
+/**
+ * Represents the robot's state, including its position and orientation.
+ */
 public class Robot {
 
-  private int x;
-  private int y;
-  private char direction; // N, E, S, W
+  private int x; // X-coordinate of the robot
+  private int y; // Y-coordinate of the robot
+  private char direction; // Direction the robot is facing (N, E, S, W)
 
+  /**
+   * Constructor to initialize the robot's position and orientation.
+   *
+   * @param x         Initial X-coordinate
+   * @param y         Initial Y-coordinate
+   * @param direction Initial direction (N, E, S, W)
+   */
   public Robot(int x, int y, char direction) {
     this.x = x;
     this.y = y;
