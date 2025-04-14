@@ -35,7 +35,7 @@ public class GridRenderer {
     switch (direction) {
       case 'N':
         return "[↑]";
-      case 'E':gl
+      case 'E':
         return "[→]";
       case 'S':
         return "[↓]";
