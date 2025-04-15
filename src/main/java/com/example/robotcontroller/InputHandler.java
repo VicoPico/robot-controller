@@ -7,6 +7,8 @@ import java.util.Scanner;
  */
 public class InputHandler {
 
+  private static final String EXIT_TIP =
+    "Tip: Press Ctrl + C at any time to exit the application."; // Reusable exit tip message
   private final Scanner scanner;
 
   /**
@@ -29,6 +31,7 @@ public class InputHandler {
     boolean validInput = false;
 
     System.out.println("Step 1: Define the room dimensions.");
+    System.out.println(EXIT_TIP); // Use the reusable exit tip message
     while (!validInput) {
       try {
         // Prompt the user for the width of the room
@@ -71,6 +74,7 @@ public class InputHandler {
     System.out.println(
       "\nStep 2: Set the robot's starting position and orientation."
     );
+    System.out.println(EXIT_TIP); // Use the reusable exit tip message
     while (!validInput) {
       try {
         // Prompt the user for the x-coordinate of the robot
@@ -120,6 +124,7 @@ public class InputHandler {
     boolean validInput = false;
 
     System.out.println("\nStep 4: Issue commands to move the robot.");
+    System.out.println(EXIT_TIP); // Use the reusable exit tip message
     while (!validInput) {
       try {
         // Prompt the user for a sequence of commands
