@@ -1,21 +1,24 @@
 package com.example.robotcontroller;
 
 /**
- * Represents the room (grid) where the robot moves.
- * Handles the dimensions of the room and validates boundaries.
+ * Represents a grid-based room where the robot operates.
  */
 public class Room {
 
-  private final int width; // Width of the room
-  private final int height; // Height of the room
+  private final int width;
+  private final int height;
 
   /**
-   * Constructor to initialize the room dimensions.
+   * Constructor for the Room class.
    *
-   * @param width  Width of the room
-   * @param height Height of the room
+   * @param width  The width of the room (must be positive).
+   * @param height The height of the room (must be positive).
+   * @throws IllegalArgumentException if width or height is not positive.
    */
   public Room(int width, int height) {
+    if (width <= 0 || height <= 0) {
+      throw new IllegalArgumentException("Room dimensions must be positive.");
+    }
     this.width = width;
     this.height = height;
   }
@@ -29,11 +32,11 @@ public class Room {
   }
 
   /**
-   * Checks if a given position (x, y) is within the room's boundaries.
+   * Checks if a given position is within the bounds of the room.
    *
-   * @param x X-coordinate
-   * @param y Y-coordinate
-   * @return true if the position is within bounds, false otherwise
+   * @param x The x-coordinate.
+   * @param y The y-coordinate.
+   * @return True if the position is within bounds, false otherwise.
    */
   public boolean isWithinBounds(int x, int y) {
     return x >= 0 && x < width && y >= 0 && y < height;
