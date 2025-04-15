@@ -1,5 +1,7 @@
 package com.example.robotcontroller;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 /**
@@ -8,6 +10,9 @@ import java.util.Scanner;
 public class App {
 
   public static void main(String[] args) {
+    // Print the ASCII banner
+    printBanner();
+
     Scanner scanner = new Scanner(System.in);
 
     // Step 1: Get room dimensions
@@ -55,6 +60,24 @@ public class App {
       );
     } catch (Exception e) {
       System.out.println(e.getMessage());
+    }
+  }
+
+  /**
+   * Reads and prints the ASCII banner from the banner.txt file.
+   */
+  private static void printBanner() {
+    try (
+      BufferedReader reader = new BufferedReader(
+        new InputStreamReader(App.class.getResourceAsStream("/banner.txt"))
+      )
+    ) {
+      String line;
+      while ((line = reader.readLine()) != null) {
+        System.out.println(line);
+      }
+    } catch (Exception e) {
+      System.out.println("Error: Unable to load banner.");
     }
   }
 }
