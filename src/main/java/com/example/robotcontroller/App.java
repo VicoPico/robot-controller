@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 /**
- * Entry point for the application. Handles user input and orchestrates the logic.
+ * Entry point for the application. Orchestrates the logic.
  */
 public class App {
 
@@ -24,53 +24,27 @@ public class App {
     System.out.println();
 
     Scanner scanner = new Scanner(System.in);
+    InputHandler inputHandler = new InputHandler(scanner);
 
-    // Step 1: Get room dimensions
-    System.out.println("Step 1: Define the room dimensions.");
-    System.out.println("Enter the width of the room:");
-    int width = scanner.nextInt();
-    System.out.println("Enter the height of the room:");
-    int height = scanner.nextInt();
-    Room room = new Room(width, height);
-
-    // Step 2: Get robot's starting position and orientation
-    System.out.println(
-      "\nStep 2: Set the robot's starting position and orientation."
-    );
-    System.out.println("Enter the robot's starting x-coordinate:");
-    int startX = scanner.nextInt();
-    System.out.println("Enter the robot's starting y-coordinate:");
-    int startY = scanner.nextInt();
-    System.out.println("Enter the robot's starting direction (N, E, S, W):");
-    char startDirection = scanner.next().toUpperCase().charAt(0);
-    Robot robot = new Robot(startX, startY, startDirection);
-
-    // Validate starting position
-    if (!room.isWithinBounds(startX, startY)) {
-      System.out.println(
-        "Error: Starting position is out of bounds! Please restart the application."
-      );
-      return;
-    }
-
-    // Step 3: Render initial grid
-    System.out.println("\nStep 3: Initial state of the room and robot:");
-    GridRenderer.renderGrid(room, robot);
-
-    // Step 4: Get commands
-    System.out.println("\nStep 4: Issue commands to move the robot.");
-    System.out.println(
-      "Enter a sequence of commands (L for left, R for right, F for forward)."
-    );
-    System.out.println(
-      "For example, 'LFFR' will turn the robot left, move forward twice, and then turn right:"
-    );
-    String commands = scanner.next().toUpperCase();
-
-    // Step 5: Process commands
-    CommandProcessor processor = new CommandProcessor(room, robot);
     try {
+      // Step 1: Get room dimensions
+      Room room = inputHandler.getRoomDimensions();
+
+      // Step 2: Get robot's starting position and orientation
+      Robot robot = inputHandler.getRobotStartingPosition(room);
+
+      // Step 3: Render initial grid
+      System.out.println("\nStep 3: Initial state of the room and robot:");
+      GridRenderer.renderGrid(room, robot);
+
+      // Step 4: Get commands
+      String commands = inputHandler.getCommands();
+
+      // Step 5: Process commands
+      CommandProcessor processor = new CommandProcessor(room, robot);
       processor.processCommands(commands);
+
+      // Step 6: Render final grid
       System.out.println("\nFinal State:");
       GridRenderer.renderGrid(room, robot);
       System.out.println(
