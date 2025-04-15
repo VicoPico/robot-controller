@@ -39,5 +39,8 @@ replay_pid*
 /target/maven-status/
 /target/surefire-reports/
 
+# Maven-generated files
+/target/
+
 # macOS system files
 .DS_Store
