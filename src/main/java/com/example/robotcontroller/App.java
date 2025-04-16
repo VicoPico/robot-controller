@@ -21,6 +21,9 @@ public class App {
     System.out.println(
       "You can specify the room dimensions, the robot's starting position, and issue commands to move it."
     );
+    System.out.println(
+      "In case you don't want to continue, \u001B[1;37mPress Ctrl + C\u001B[0m at any time \u001B[1;37mto exit the application.\u001B[0m"
+    );
     System.out.println();
 
     Scanner scanner = new Scanner(System.in);
@@ -48,7 +51,7 @@ public class App {
       System.out.println("\nFinal State:");
       GridRenderer.renderGrid(room, robot);
       System.out.println(
-        "Final Position: " +
+        "Final Position Report: " +
         robot.getX() +
         " " +
         robot.getY() +

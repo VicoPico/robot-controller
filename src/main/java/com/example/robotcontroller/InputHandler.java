@@ -7,8 +7,6 @@ import java.util.Scanner;
  */
 public class InputHandler {
 
-  private static final String EXIT_TIP =
-    "Tip: Press Ctrl + C at any time to exit the application."; // Reusable exit tip message
   private final Scanner scanner;
 
   /**
@@ -31,15 +29,18 @@ public class InputHandler {
     boolean validInput = false;
 
     System.out.println("Step 1: Define the room dimensions.");
-    System.out.println(EXIT_TIP); // Use the reusable exit tip message
     while (!validInput) {
       try {
         // Prompt the user for the width of the room
-        System.out.println("Enter the width of the room:");
+        System.out.println(
+          "Enter an integer (a whole and positive number) to definfe the width of the room:"
+        );
         width = scanner.nextInt();
 
         // Prompt the user for the height of the room
-        System.out.println("Enter the height of the room:");
+        System.out.println(
+          "Enter an integer (a whole and positive number) to definfe the height of the room:"
+        );
         height = scanner.nextInt();
 
         // Validate that both dimensions are positive integers
@@ -47,12 +48,14 @@ public class InputHandler {
           validInput = true;
         } else {
           System.out.println(
-            "Error: Dimensions must be positive integers. Please try again."
+            "Error: Dimensions must be positive integers (positive whole numbers). Please try again."
           );
         }
       } catch (Exception e) {
         // Handle invalid input (e.g., non-integer values)
-        System.out.println("Error: Invalid input. Please enter integers only.");
+        System.out.println(
+          "Error: Invalid input. Please enter positive integers (positive whole numbers) only."
+        );
         scanner.nextLine(); // Clear the invalid input
       }
     }
@@ -74,15 +77,18 @@ public class InputHandler {
     System.out.println(
       "\nStep 2: Set the robot's starting position and orientation."
     );
-    System.out.println(EXIT_TIP); // Use the reusable exit tip message
     while (!validInput) {
       try {
         // Prompt the user for the x-coordinate of the robot
-        System.out.println("Enter the robot's starting x-coordinate:");
+        System.out.println(
+          "Enter an integer to set the robot's starting x-coordinate:"
+        );
         startX = scanner.nextInt();
 
         // Prompt the user for the y-coordinate of the robot
-        System.out.println("Enter the robot's starting y-coordinate:");
+        System.out.println(
+          "Enter an integer to set the robot's starting y-coordinate:"
+        );
         startY = scanner.nextInt();
 
         // Prompt the user for the direction the robot is facing
@@ -105,7 +111,7 @@ public class InputHandler {
       } catch (Exception e) {
         // Handle invalid input (e.g., non-integer values for coordinates)
         System.out.println(
-          "Error: Invalid input. Please enter integers (whole numbers) for coordinates and a valid direction (N, E, S, W)."
+          "Error: Invalid input. Please enter integers (whole numbers) for coordinates and a valid direction (only letters N, E, S, W)."
         );
         scanner.nextLine(); // Clear the invalid input
       }
@@ -124,7 +130,6 @@ public class InputHandler {
     boolean validInput = false;
 
     System.out.println("\nStep 4: Issue commands to move the robot.");
-    System.out.println(EXIT_TIP); // Use the reusable exit tip message
     while (!validInput) {
       try {
         // Prompt the user for a sequence of commands
@@ -138,13 +143,13 @@ public class InputHandler {
           validInput = true;
         } else {
           System.out.println(
-            "Error: Commands must only contain L, R, or F. Please try again."
+            "Error: Commands must only contain the letters L, R, or F. Please try again."
           );
         }
       } catch (Exception e) {
         // Handle invalid input (e.g., non-string values)
         System.out.println(
-          "Error: Invalid input. Please enter a valid sequence of commands."
+          "Error: Invalid input. Please enter a valid sequence of commands (only letters N, E, S, W)."
         );
         scanner.nextLine(); // Clear the invalid input
       }
