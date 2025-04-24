@@ -157,3 +157,4 @@ Enter a sequence of commands (L for left, R for right, F for forward): LFFR
 - Add support for emojis.
 - Allow saving and loading robot configurations.
 - Web-based frontend, maybe use Vaadin in a Spring Boot application.
+- Replace `System.out.println` with a proper logging framework (e.g., SLF4J with Logback) for better logging practices and configurability.

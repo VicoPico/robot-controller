@@ -27,17 +27,12 @@ public class CommandProcessor {
   public void processCommands(String commands) {
     for (char command : commands.toCharArray()) {
       switch (command) {
-        case 'L':
-          turnLeft();
-          break;
-        case 'R':
-          turnRight();
-          break;
-        case 'F':
-          moveForward();
-          break;
-        default:
-          throw new IllegalArgumentException("Invalid command: " + command);
+        case 'L' -> turnLeft();
+        case 'R' -> turnRight();
+        case 'F' -> moveForward();
+        default -> throw new IllegalArgumentException(
+          "Invalid command: " + command
+        );
       }
     }
   }
@@ -47,18 +42,10 @@ public class CommandProcessor {
    */
   private void turnLeft() {
     switch (robot.getDirection()) {
-      case 'N':
-        robot.setDirection('W');
-        break;
-      case 'W':
-        robot.setDirection('S');
-        break;
-      case 'S':
-        robot.setDirection('E');
-        break;
-      case 'E':
-        robot.setDirection('N');
-        break;
+      case 'N' -> robot.setDirection('W');
+      case 'W' -> robot.setDirection('S');
+      case 'S' -> robot.setDirection('E');
+      case 'E' -> robot.setDirection('N');
     }
   }
 
@@ -67,18 +54,10 @@ public class CommandProcessor {
    */
   private void turnRight() {
     switch (robot.getDirection()) {
-      case 'N':
-        robot.setDirection('E');
-        break;
-      case 'E':
-        robot.setDirection('S');
-        break;
-      case 'S':
-        robot.setDirection('W');
-        break;
-      case 'W':
-        robot.setDirection('N');
-        break;
+      case 'N' -> robot.setDirection('E');
+      case 'E' -> robot.setDirection('S');
+      case 'S' -> robot.setDirection('W');
+      case 'W' -> robot.setDirection('N');
     }
   }
 
@@ -92,18 +71,10 @@ public class CommandProcessor {
 
     // Update position based on the current direction
     switch (robot.getDirection()) {
-      case 'N':
-        newY++;
-        break;
-      case 'E':
-        newX++;
-        break;
-      case 'S':
-        newY--;
-        break;
-      case 'W':
-        newX--;
-        break;
+      case 'N' -> newY++;
+      case 'E' -> newX++;
+      case 'S' -> newY--;
+      case 'W' -> newX--;
     }
 
     // Validate the new position
