@@ -41,18 +41,12 @@ public class GridRenderer {
   private static String getRobotSymbol(char direction) {
     final String PURPLE_ANSI = "\u001B[1;35m"; // ANSI escape code for purple (Bold)
     final String RESET = "\u001B[0m"; // ANSI escape code to reset color
-
-    switch (direction) {
-      case 'N':
-        return "[" + PURPLE_ANSI + "↑" + RESET + "]";
-      case 'E':
-        return "[" + PURPLE_ANSI + "→" + RESET + "]";
-      case 'S':
-        return "[" + PURPLE_ANSI + "↓" + RESET + "]";
-      case 'W':
-        return "[" + PURPLE_ANSI + "←" + RESET + "]";
-      default:
-        return "[" + PURPLE_ANSI + "R" + RESET + "]"; // Default case for invalid direction
-    }
+    return switch (direction) {
+      case 'N' -> "[" + PURPLE_ANSI + "↑" + RESET + "]";
+      case 'E' -> "[" + PURPLE_ANSI + "→" + RESET + "]";
+      case 'S' -> "[" + PURPLE_ANSI + "↓" + RESET + "]";
+      case 'W' -> "[" + PURPLE_ANSI + "←" + RESET + "]";
+      default -> "[" + PURPLE_ANSI + "R" + RESET + "]";
+    }; // Default case for invalid direction
   }
 }
